@@ -14,11 +14,13 @@ const generateJsonWebToken = (userId, res)=>  {
     console.log("Generated JWT Token:", token);
 
     res.cookie('jwtoken', token, {
-        httpOnly: 'true',
+        httpOnly: true,
         maxAge: 15 * 24 * 60 * 60 * 1000,
         sameSite: "strict",
         secure: true
     });
+
+    return token; // Return the generated token
 
 }
 

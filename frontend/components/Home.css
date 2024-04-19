@@ -1,0 +1,84 @@
+/* Home.css */
+
+/* Apply global styles to the entire document */
+body {
+    font-family: 'Roboto', sans-serif; /* Example font family */
+  }
+  
+  /* Center the form vertically and horizontally */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top of the container */
+    min-height: 100vh;
+    /* backdrop-filter: blur(8px); Apply blur effect  */
+    /* background-color: rgba(255, 255, 255, 0.5);  */
+  }
+  
+  /* Style the form container */
+  .form-container {
+    width: 100%;
+    max-width: 100%; /* Adjust as needed */
+    padding: 1rem;
+    margin-top: 1%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    display: flex; /* Use flexbox to create a two-column layout */
+  }
+  
+  /* Style the left column (users) */
+  .users-column {
+    flex: 1; /* Take up remaining space */
+    padding: 1rem;
+
+
+  }
+  
+  /* Style the right column (chat panel) */
+  .chat-column {
+    flex: 2; /* Take up twice as much space as users column */
+    padding: 1rem;
+    background-color: #fff; /* White background */
+    border-radius: 0.5rem;
+    background-color: rgba(255,255,255,0.5);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  }
+
+  .selected-user {
+    padding: 1rem;
+  }
+  
+  .message-panel {
+    max-height: 300px; /* Adjust max height as needed */
+    overflow-y: auto; /* Enable vertical scroll */
+  }
+  
+  .message {
+    margin-bottom: 0.5rem;
+  }
+  
+  .message-input {
+    display: flex;
+    margin-top: 1rem;
+  }
+  
+  .message-input input {
+    flex: 1;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .message-input button {
+    height: 2.5rem;
+    padding: 0 1rem;
+    margin-left: 0.5rem;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
