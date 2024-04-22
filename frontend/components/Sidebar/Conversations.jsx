@@ -3,9 +3,15 @@ import useConversation from '../../src/zustand/useConversation.js';
 
 import './Conversation.css';
 import emojis from '../utils/emoji.js';
+import { useSocketContext } from '../../context/SocketContext.jsx';
+import useGetConversations from '../Messages/useGetConversations.js';
 
 const Conversations = () => {
   const [users, setUsers] = useState(null);
+
+  // useGetConversation()
+
+  const {loading, conversations} = useGetConversations();
 
   // for use of different different emojis
 
@@ -45,7 +51,11 @@ const Conversations = () => {
     // for selected user
 
     const {selectedConversation, setSelectedConversation} = useConversation()
-    console.log("selected conversation is : ", selectedConversation);       
+    // console.log("selected conversation is : ", selectedConversation);  
+    
+    // checking online users
+
+    const {onlineUsers} = useSocketContext();
      
 
   return (
@@ -58,7 +68,9 @@ const Conversations = () => {
           // onClick={() => handleUserClick(user)}
           onClick={() => setSelectedConversation(user)}
         >
-          <div className='avatar online'>
+
+          <div className={`avatar ${onlineUsers.includes(user._id) ? 'online' : 'offline'}`}>
+          
             <div className='w-12 rounded-full'>
               <img src={user.profilepic} alt={`user-avatar-${user._id}`} />
             </div>

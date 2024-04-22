@@ -32,8 +32,8 @@ const LogoutButton = () => {
   };
 
   return (
-    <button type='button' className='' onClick={logoutUser}>
-      <CiLogout className='w-6 h-6 text-white cursor-pointer' />
+    <button type='button' className='cursor-pointer' onClick={logoutUser} style={{background: '#85DFC8', padding:'3%', margin:'2%', width:'20%'}}>
+      <CiLogout className='w-6 h-6' />
     </button>
   );
 };

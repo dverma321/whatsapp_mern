@@ -15,11 +15,13 @@ const useGetMessages = () => {
 
     useEffect(() => {
 
+
         const getMessages = async (e) => {
+        setLoading(true);
+
             
             try {
 
-                setLoading(true);
 
                 const URI = "http://localhost:8000"
                 const token = localStorage.getItem('jwtoken');
@@ -28,8 +30,7 @@ const useGetMessages = () => {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${authUser}`,
+                        'Content-Type': 'application/json',                        
                     },
                     credentials: 'include',
 

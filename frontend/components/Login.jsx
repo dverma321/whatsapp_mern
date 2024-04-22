@@ -30,7 +30,6 @@ const Login = () => {
 
     try {
 
-
       if(!uname )
       {
         toast.error('Please fill the user name...')
@@ -62,8 +61,9 @@ const Login = () => {
 
       toast.success('Login Successful');
 
-       // Save JWT token in localStorage
-       localStorage.setItem('jwtoken', response.token); // Assuming your backend sends back a token field
+     
+      // Save complete user object (including JWT token) in localStorage
+      localStorage.setItem('userData', JSON.stringify(response)); // Assuming your backend sends back the complete user object
 
         // Save JWT token in cookies
       document.cookie = `jwtoken=${response.token}; path=/`; // Set the cookie with path='/'
@@ -79,12 +79,10 @@ const Login = () => {
 
       toast.error(error.message);
       
-    }
-
+    }  
    
 
   }
-
 
   return (
     <div className=''>

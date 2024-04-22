@@ -11,6 +11,8 @@ import Sidebar from '../components/Sidebar';
 import MessageBody from '../components/MessageBody';
 import { Toaster } from 'react-hot-toast';
 import LogoutButton from '../components/Sidebar/LogoutButton.jsx';
+import './index.css'; // Import your CSS file
+
 
 function App() {
     const { authUser } = useAuthContext(); // Destructure authUser from useAuthContext

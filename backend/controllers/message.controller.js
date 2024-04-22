@@ -1,6 +1,7 @@
 const Conversation = require('../models/conversation.model.js');
 const Message  = require('../models/messages.model.js');
 const mongoose = require('mongoose');
+const { getReceiverSocketId, io } = require('../socket/socket.js');
 
 const messageRoutes = async (req, res) => {
     try {
@@ -35,7 +36,16 @@ const messageRoutes = async (req, res) => {
 
         // below is running parallel
 
-        await Promise.all([conversation.save(), newMessage.save()]); // at first conversation is creating then messages is saving
+        await Promise.all([conversation.save(), newMessage.save()]); // at first conversation is creating then messages is 
+        
+        // socket io functionality 
+
+        const receiverid = getReceiverSocketId(receiverId);
+
+        if(receiverid)
+        {
+            io.to(receiverid).emit("newMessage", newMessage)
+        }
 
         res.status(201).json(newMessage);
 

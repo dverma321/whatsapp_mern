@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Message from './Message';
 import MessageInput from './MessageInput';
 import useConversation from '../src/zustand/useConversation';
 import useGetMessages from '../components/Messages/useGetMessages';
+import useListenMessage from './Messages/useListenMessage';
 
 
 const MessageContainer = () => {
@@ -22,12 +23,30 @@ const MessageContainer = () => {
 
   // Getting Messages
 
-  const { messages, loading} = useGetMessages();
+  const { messages, loading } = useGetMessages();
 
   // console.log("messages are : ", messages);
 
+  // automatic scrolling to the last end of the messages in each user
+
+  const lastMessageRef = useRef();
+
+  useEffect(() => {
+
+    setTimeout(() => {
+
+      lastMessageRef.current?.scrollIntoView({ behaviour: "smooth" })
+
+    }, 100)
+  }, [messages])
+
+  // immediately listen the message
+
+  useListenMessage()
+
+
   return (
-    <div style={{ height: '500px', width: '500px', border: '2px solid #000', position: 'relative' }}>
+    <div style={{ height: '550px', width: '500px', border: '2px solid #000', position: 'relative' }}>
 
 
       {/* Dynamic header */}
@@ -37,47 +56,46 @@ const MessageContainer = () => {
         </div>
       ) : (
         <div className='px-4 mb-2 ' style={{ background: '#4a5568', position: 'sticky', top: 0, zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: '#ffffff', fontSize: '16px', fontWeight: 'bold', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
-          <span className='label-text'>To:</span>
+          {selectedConversation && <span className='label-text p-2 m-2'>To:</span>}
           {/* Conditional rendering to check if selectedConversation exists */}
           {selectedConversation ? (
-            <span className='text-gray-900 font-bold'>{selectedConversation.name}</span>
+            <span className='text-gray-900 font-bold uppercase'>{selectedConversation.name}</span>
           ) : (
-            <span>No Conversation Selected</span>
+            <span></span>
           )}
         </div>
-
       )}
 
 
-      <div className='border border-gray-300 rounded-lg p-2' style={{ border: '2px solid red' }}>
-        <div className='overflow-auto px-4 p-2' style={{ border: '2px solid green', height: '400px', position: 'relative' }}>
-
+      <div className='p-2'>
+        <div className='overflow-auto px-4 p-2' style={{ height: '400px', position: 'relative' }}>
 
           {/* Importing Message */}
 
           {selectedConversation ? (
             <>
-           {messages.length > 0 && messages.map((message) => (
-            <Message key={message._id} message={message} />
-          ))}
-
-
-             
+              {messages.length > 0 && messages.map((message) => (
+                <div key={message._id} ref={lastMessageRef}>
+                  <Message message={message} />
+                </div>
+              ))}
             </>
           ) : (
-            <span>No Conversation is selected</span>
+            <span className='text-center'>No Conversation is selected</span>
           )}
         </div>
-        
 
-        {selectedConversation ?  (
+         {/* Divider line */}
+         <div className='divider my-0 py-0 h-1' />
+
+        {selectedConversation ? (
           <>
             <MessageInput />
           </>
-        ): 
-        (
-          <p></p>
-        )}
+        ) :
+          (
+            ""
+          )}
 
       </div>
     </div>

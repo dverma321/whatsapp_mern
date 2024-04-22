@@ -6,5 +6,6 @@
 .conversation-container {
     max-height: 400px; /* Set maximum height for the container */
     overflow-y: auto; /* Add a vertical scrollbar when content overflows */
+   
   }
   
