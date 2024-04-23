@@ -4,6 +4,7 @@ import MessageInput from './MessageInput';
 import useConversation from '../src/zustand/useConversation';
 import useGetMessages from '../components/Messages/useGetMessages';
 import useListenMessage from './Messages/useListenMessage';
+import '../components/MessageContainer.css';
 
 
 const MessageContainer = () => {
@@ -46,7 +47,7 @@ const MessageContainer = () => {
 
 
   return (
-    <div style={{ height: '550px', width: '500px', border: '2px solid #000', position: 'relative' }}>
+    <div style={{ height: '550px', width: '500px', position: 'relative' }}>
 
 
       {/* Dynamic header */}
@@ -68,7 +69,7 @@ const MessageContainer = () => {
 
 
       <div className='p-2'>
-        <div className='overflow-auto px-4 p-2' style={{ height: '400px', position: 'relative' }}>
+        <div className='overflow-auto px-4 p-2 showMessageBody'>
 
           {/* Importing Message */}
 
@@ -86,7 +87,11 @@ const MessageContainer = () => {
         </div>
 
          {/* Divider line */}
+         { selectedConversation ? (
          <div className='divider my-0 py-0 h-1' />
+         ): ""}
+
+         {/* Input Message  */}
 
         {selectedConversation ? (
           <>

@@ -3,6 +3,9 @@ import reactRefresh from '@vitejs/plugin-react-refresh';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import daisyUI from 'daisyui';
+import dotenv from 'dotenv';
+
+dotenv.config();
 // import daisyUI from 'daisyui/vite';
 
 

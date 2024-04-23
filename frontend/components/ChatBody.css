@@ -1,0 +1,19 @@
+.messageBodyClass{
+    backdrop-filter: blur(4px); /* Apply a blur effect */
+    background-color: rgba(255, 255, 255, 0.5); /* Background color with transparency */
+}
+
+.chat-body-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Adjust column widths as needed */
+    gap: 4px; /* Adjust gap between columns */
+  }
+  
+
+  
+@media (min-width: 300px) and (max-width: 767px) {
+
+  
+  }
+
+  

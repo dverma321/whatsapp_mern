@@ -9,14 +9,20 @@ const LogoutButton = () => {
 
   const logoutUser = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/auth/logout', {
+
+      const local_server = import.meta.env.VITE_LOCAL_SERVER;
+      const backend_server = import.meta.env.VITE_BACKEND_SERVER;
+      const apiUrl = import.meta.env.DEV ? local_server : backend_server;
+      console.log("apiurl ", apiUrl)
+
+      const response = await fetch(`${apiUrl}/api/auth/logout`, {
         method: 'GET',
         credentials: 'include',
       });
 
       if (response.status === 201) {
         document.cookie = 'jwtoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        localStorage.removeItem('jwtoken');
+        localStorage.removeItem('userData');
         setAuthUser(null ); // Update authentication state
         navigation('/login');
         console.log('Logout successful');

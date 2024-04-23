@@ -55,7 +55,13 @@ const Signup = () => {
         return;
       }
 
-      const res = await fetch('http://localhost:8000/api/auth/signup', {
+      const local_server = import.meta.env.VITE_LOCAL_SERVER;
+      const backend_server = import.meta.env.VITE_BACKEND_SERVER;
+      const apiUrl = import.meta.env.DEV ? local_server : backend_server;
+      console.log("apiurl ", apiUrl)
+
+
+      const res = await fetch(`${apiUrl}/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

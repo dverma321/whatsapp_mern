@@ -21,12 +21,15 @@ const useGetMessages = () => {
 
             
             try {
+                const URI = 'http://localhost:8000';
+                const token = localStorage.getItem('userData.jwtoken');
 
+                const local_server = import.meta.env.VITE_LOCAL_SERVER;
+                const backend_server = import.meta.env.VITE_BACKEND_SERVER;
+                const apiUrl = import.meta.env.DEV ? local_server : backend_server;
+                console.log("apiurl ", apiUrl);               
 
-                const URI = "http://localhost:8000"
-                const token = localStorage.getItem('jwtoken');
-
-                const data = await fetch(`${URI}/api/messages/${selectedConversation._id}`, {
+                const data = await fetch(`${apiUrl}/api/messages/${selectedConversation._id}`, {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',

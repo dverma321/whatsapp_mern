@@ -14,10 +14,16 @@ const useGetConversations = () => {
             try {
 
                 const URI = 'http://localhost:8000';
-                const token = localStorage.getItem('jwtoken');
+                const token = localStorage.getItem('userData.jwtoken');
+
+                const local_server = import.meta.env.VITE_LOCAL_SERVER;
+                const backend_server = import.meta.env.VITE_BACKEND_SERVER;
+                const apiUrl = import.meta.env.DEV ? local_server : backend_server;
+                console.log("apiurl ", apiUrl)
+
 
                 setLoading(true);
-                const res = await fetch(`${URI}/api/users` , {
+                const res = await fetch(`${apiUrl}/api/users` , {
                     
                         method: 'GET',
                         headers: {
