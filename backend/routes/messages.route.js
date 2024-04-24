@@ -8,7 +8,7 @@ dotenv.config();
 const { messageRoutes, getMessages  } = require('../controllers/message.controller.js');
 
 const router = express.Router();
-route.use(cookieParser()); // Use cookie-parser middleware first to parse cookies
+router.use(cookieParser()); // Use cookie-parser middleware first to parse cookies
 
 router.post("/send/:id", protectRoute, messageRoutes); // you have to import the same name like messageRoutes in your controller
 router.get("/:id", protectRoute, getMessages); 
