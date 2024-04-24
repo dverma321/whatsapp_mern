@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 app.use(cors(
     {
-        origin: "http://localhost:5173",
+        origin: "https://globalchatting.netlify.app",
         // origin:"https://findyourperfectmatch.netlify.app",
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true, // set the cookie true
