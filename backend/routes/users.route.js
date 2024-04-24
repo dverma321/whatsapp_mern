@@ -7,21 +7,16 @@ const usersToSideBar = require('../controllers/users.controller.js');
 
 const route = express.Router();
 
-route.use(cookieParser()); // Use cookie-parser middleware to parse cookies from the backend
+route.use(cookieParser()); // Use cookie-parser middleware first to parse cookies
 
-route.use(cors(
-    {
-        origin: "https://globalchatting.netlify.app",
-        // origin:"https://findyourperfectmatch.netlify.app",
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        credentials: true, // set the cookie true
-        optionsSuccessStatus: 204,     // Respond with a 204 status code for preflight requests
-        allowedHeaders: 'Authorization, Content-Type', // Add required headers
-    }
-));
-
+// CORS configuration
+route.use(cors({
+    origin: "https://globalchatting.netlify.app",
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Set credentials to true for cookies
+    allowedHeaders: 'Authorization, Content-Type', // Include necessary headers
+}));
 
 route.get("/", protectRoute, usersToSideBar);
-
 
 module.exports = route;
