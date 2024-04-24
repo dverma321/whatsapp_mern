@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const protectRoute = require('../middleware/protectRoute.js');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 dotenv.config();
 
