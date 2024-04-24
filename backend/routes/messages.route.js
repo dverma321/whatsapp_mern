@@ -16,7 +16,6 @@ router.use(cors({
     origin: "https://globalchatting.netlify.app",
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Set credentials to true for cookies
-    allowedHeaders: 'Authorization, Content-Type', // Include necessary headers
 }));
 
 router.post("/send/:id", protectRoute, messageRoutes); // you have to import the same name like messageRoutes in your controller
