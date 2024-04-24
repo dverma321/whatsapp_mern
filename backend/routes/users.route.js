@@ -14,7 +14,6 @@ route.use(cors({
     origin: "https://globalchatting.netlify.app",
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Set credentials to true for cookies
-    allowedHeaders: 'Authorization, Content-Type', // Include necessary headers
 }));
 
 route.get("/", protectRoute, usersToSideBar);
