@@ -1,3 +1,4 @@
+const express = require('express');
 const jwtoken = require('jsonwebtoken');
 const newUser = require('../models/user.model');
 const generateJsonWebToken = require("../utils/generateJWToken.js");
