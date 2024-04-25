@@ -12,7 +12,7 @@ route.use(cookieParser()); // Middleware to parse cookies
 const protectRoute = async (req, res, next) => {
     try {
 
-        const token = req.cookies.token;
+        const token = req.cookies.jwtoken;
         console.log("cookies is : ", req.cookies);
         console.log("Token in Protected Route is : ", token);
 
