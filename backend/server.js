@@ -20,8 +20,7 @@ app.use(cors({
     origin: "https://globalchatting.netlify.app",
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     credentials: true,
-    optionsSuccessStatus: 204,
-    allowedHeaders: ['Authorization', 'Content-Type', 'Access-Control-Allow-Origin'],
+    optionsSuccessStatus: 204
 }));
 
 
