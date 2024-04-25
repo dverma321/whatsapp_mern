@@ -14,7 +14,6 @@ const { app, server } = require('./socket/socket.js');
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cookieParser());
 
 app.use(cors({
     origin: "https://globalchatting.netlify.app",
@@ -23,7 +22,7 @@ app.use(cors({
     optionsSuccessStatus: 204
 }));
 
-
+app.use(cookieParser());
 
 app.use('/api/auth', useRouths);
 app.use('/api/messages', messageRouths);
