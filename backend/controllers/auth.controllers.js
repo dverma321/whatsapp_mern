@@ -108,7 +108,7 @@ const loginUser = async (req, res) => {
             console.log("Generated JWT Token:", token);
 
             
-            res.cookie("token", token, {
+            res.cookie("jwtoken", token, {
                 expires: new Date(Date.now() + 25892000000),
                 httpOnly: true,
                 secure: true,
