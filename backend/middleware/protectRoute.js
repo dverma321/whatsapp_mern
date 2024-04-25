@@ -3,8 +3,8 @@ const jwtoken = require('jsonwebtoken');
 const newUser = require('../models/user.model');
 const generateJsonWebToken = require("../utils/generateJWToken.js");
 const cookieParser = require('cookie-parser');
-require('dotenv').config();
 
+require('dotenv').config();
 const route = express.Router(); // Define your Express Router
 route.use(cookieParser()); // Middleware to parse cookies
 
