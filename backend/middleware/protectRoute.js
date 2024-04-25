@@ -7,7 +7,11 @@ require('dotenv').config();
 const protectRoute = async (req, res, next) => {
     try {
 
-        const token = req.cookies.jwtoken;
+        // const token = req.cookies.jwtoken;
+        // console.log("Token in Protected Route is : ", token);
+
+        const authHeader = req.headers['authorization'];
+        const token = authHeader && authHeader.split(' ')[1]; // Extract token from Authorization header
         console.log("Token in Protected Route is : ", token);
 
         if (!token) {
