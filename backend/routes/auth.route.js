@@ -3,8 +3,6 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const { loginUser, signupUser, logoutUser } = require('../controllers/auth.controllers.js');
 
-
-
 const router = express.Router();
 
 router.post('/signup', signupUser);
