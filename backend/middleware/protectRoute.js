@@ -1,8 +1,11 @@
 const jwtoken = require('jsonwebtoken');
 const newUser = require('../models/user.model');
 const generateJsonWebToken = require("../utils/generateJWToken.js");
-
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
+
+route.use(cookieParser()); // Middleware to parse cookies
+
 
 const protectRoute = async (req, res, next) => {
     try {
