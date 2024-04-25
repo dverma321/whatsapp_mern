@@ -11,7 +11,8 @@ const io = new Server(server, {
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     credentials: true,
     optionsSuccessStatus: 204
-}));
+               }))
+         });
 
 
 
