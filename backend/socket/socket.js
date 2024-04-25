@@ -5,16 +5,14 @@ const express = require('express');
 const app = express();
 
 const server = http.createServer(app);
+
 const io = new Server(server, {
-   app.use(cors({
-    origin: "https://globalchatting.netlify.app",
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    credentials: true,
-    optionsSuccessStatus: 204
-               }))
-         });
-
-
+    cors: {
+        origin: "https://globalchatting.netlify.app",
+        methods: ['GET', 'POST'],
+        credentials: true
+    }
+});
 
 const userSocketMap = {}; // {userId: socket.id}
 
