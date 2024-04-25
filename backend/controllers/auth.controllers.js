@@ -107,8 +107,17 @@ const loginUser = async (req, res) => {
             const token = generateJsonWebToken(userPresent._id, res); // passing two parameters first one is userId, secondone is res
             console.log("Generated JWT Token:", token);
 
+            res.cookie("jwtoken", token, {
+                expires: new Date(Date.now() + 25892000000),
+                httpOnly: true,
+                secure: true,
+                sameSite: 'none',
+                path: '/',
+                credentials: 'include'
+              });  
 
-            console.log("Login Successful");
+           
+            console.log("Login Successful");          
 
             res.status(201).json({
                 message: "Login Successful",

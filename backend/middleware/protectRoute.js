@@ -8,7 +8,6 @@ const protectRoute = async (req, res, next) => {
     try {
 
         const token = req.cookies.jwtoken;
-        // const token = localStorage.getItem("jwtoken");
         console.log("Token in Protected Route is : ", token);
 
         if (!token) {

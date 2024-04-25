@@ -16,7 +16,7 @@ const generateJsonWebToken = (userId, res)=>  {
     res.cookie('jwtoken', token, {
         httpOnly: true,
         maxAge: 15 * 24 * 60 * 60 * 1000,
-        sameSite: "strict",
+        sameSite: "strict", // allow cors() i.e cookies will store from different websites also
         secure: true
     });
 
