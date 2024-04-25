@@ -6,8 +6,6 @@ const usersToSideBar = require('../controllers/users.controller.js');
 
 const route = express.Router();
 
-route.use(cookieParser()); // Use cookie-parser middleware to parse cookies
-
 route.get("/", protectRoute, usersToSideBar);
 
 
