@@ -20,7 +20,7 @@ app.use(cors({
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204,
-    allowedHeaders: 'Authorization, Content-Type',
+    allowedHeaders: 'Authorization, Content-Type, Access-Control-Allow-Origin',
 }));
 
 app.use('/api/auth', useRouths);
