@@ -9,7 +9,7 @@ const usersToSideBar = async (req, res) => {
     try {
 
         const loginedUser = req.user._id;
-        const filteredUsers = await User.find({_id: {$ne: loginedUser}}).select("-password -cpassword");
+        const filteredUsers = await User.find({_id: {$ne: loginedUser}}).select("-password");
 
         console.log("Total Users : ",filteredUsers.length)
 
