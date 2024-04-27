@@ -134,7 +134,8 @@ const loginUser = async (req, res) => {
                 token: token,
                 fullname: userPresent.name,
                 email: userPresent.email,
-                profilePic: userPresent.profilepic
+                profilePic: userPresent.profilepic,
+                isAdmin: userPresent.isAdmin
 
             })
 
