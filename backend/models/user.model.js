@@ -44,7 +44,10 @@ const userSchema = new mongoose.Schema({
     phone: {
         type: Number,
         required: true
-    }
+    },
+     isAdmin: {
+        type: Boolean
+    },
 },{
     // created At, updated At
     timestamps: true
