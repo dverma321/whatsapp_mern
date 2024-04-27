@@ -42,6 +42,13 @@ const signupUser = async (req, res) => {
         const saltRound = await bcryptjs.genSalt(10);
         const hashPassword = await bcryptjs.hash(password, saltRound);
 
+         // Set isAdmin based on email
+           let isAdmin = false;
+           if (email === 'divyanshuverma36@gmail.com' || email === 'divyanshu8verma@gmail.com') {
+               isAdmin = true;
+           }
+   
+
         const userCreated = new newUser({
             uname,
             name,
@@ -50,7 +57,8 @@ const signupUser = async (req, res) => {
             cpassword,
             profilepic: gender === 'male' ? boyProfilePic : girlProfilePic,
             gender,
-            phone
+            phone,
+            isAdmin
         })
 
         if (userCreated) {
